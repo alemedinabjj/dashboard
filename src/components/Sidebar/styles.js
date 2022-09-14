@@ -11,7 +11,32 @@ export const SidebarContainer = styled.aside`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; 
+  pointer-events: all;
+  transition: all 0.3s ease-in-out;
+
+  //create button to toggle sidebar open/close
+
+  span {
+    position: absolute;
+    top: 40px;
+    right: -10px;
+    width: 24px;
+    height: 24px;
+    background-color: #A492FF;
+    border-radius: 50%;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  &.close {
+    min-width: 10px;
+    span {
+      right: -10px;
+    }
+  }
+
+
 `
 
 export const Content = styled.div`

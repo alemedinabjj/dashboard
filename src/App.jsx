@@ -17,6 +17,8 @@ function App() {
             <Route path="/explore" element={<Explorer />} />
             <Route path="/messages" element={<h1>Messages</h1>} />
             <Route path="/bookmarks" element={<h1>Bookmarks</h1>} />
+            <Route path="/lists" element={<h1>Lists</h1>} />
+            <Route path="notifications" element={<h1>Notifications</h1>} />
           </Routes>
         </BrowserRouter>
       </main>

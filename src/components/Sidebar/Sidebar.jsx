@@ -1,7 +1,8 @@
 import * as S from './styles'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { dataButtons } from './data'
 import { Link, NavLink } from 'react-router-dom'
+import { useRef } from 'react'
 
 const LinkStyle = {
   textDecoration: 'none',
@@ -19,19 +20,36 @@ const LinkStyle = {
 }
 
 export const Sidebar = () => {
+  const navRef = useRef(null)
   const [active, setActive] = useState(false)
+  const [open, setOpen] = useState(true)
 
   const handleToggle = () => {
     setActive(!active)
   }
 
+  const handleOpen = () => {
+    setOpen(!open)
+  }
+
+  useEffect(() => {
+    handleOpen()
+  }, [])
+
   return (
     <>
-      <S.SidebarContainer>
+      <S.SidebarContainer className={open ? 'open' : 'close'}>
+        <span onClick={handleOpen} ref={navRef}></span>
         <S.Content>
           <S.UserInfo>
             <img src="https://github.com/alemedinabjj.png" alt="" />
-            <h2>Alexandre Medina</h2>
+            <h2
+              style={{
+                display: open ? 'block' : 'none'
+              }}
+            >
+              Alexandre Medina
+            </h2>
           </S.UserInfo>
           <S.ButtonGroup>
             {dataButtons.map(item => (
@@ -43,8 +61,14 @@ export const Sidebar = () => {
                   }
                   onClick={handleToggle}
                 >
-                  <img src={item.icon} alt={item.label} />
-                  {item.label}
+                  <img src={item.icon} alt="" />
+                  <p
+                    style={{
+                      display: open ? 'block' : 'none'
+                    }}
+                  >
+                    {item.label}
+                  </p>
                 </S.Button>
               </NavLink>
             ))}
@@ -56,14 +80,26 @@ export const Sidebar = () => {
               src="https://img.icons8.com/ios/50/000000/settings.png"
               alt=""
             />
-            Dark Mode
+            <p
+              style={{
+                display: open ? 'block' : 'none'
+              }}
+            >
+              Dark Mode
+            </p>
           </S.Button>
           <S.Button>
             <img
               src="https://img.icons8.com/ios/50/000000/settings.png"
               alt=""
             />
-            Logout
+            <p
+              style={{
+                display: open ? 'block' : 'none'
+              }}
+            >
+              Logout
+            </p>
           </S.Button>
         </S.ConfigArea>
       </S.SidebarContainer>
