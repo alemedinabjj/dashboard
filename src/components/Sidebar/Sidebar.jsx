@@ -43,10 +43,16 @@ export const Sidebar = () => {
 
   return (
     <>
-      <S.SidebarContainer className={open ? 'open' : 'close'}
+      <S.SidebarContainer
+        className={open ? 'open' : 'close'}
         style={{
-          backgroundColor: theme === 'light' ? 'white' : 'rgb(21, 32, 43)',
+          backgroundColor: theme === 'light' ? 'white' : 'rgb(21, 32, 43)'
         }}
+        border={
+          theme === 'light'
+            ? '1px solid rgb(230, 236, 240)'
+            : '1px solid rgb(30, 45, 59)'
+        }
       >
         <span onClick={handleOpen} ref={navRef}>
           {open ? '⇦' : '⇨'}
@@ -94,7 +100,8 @@ export const Sidebar = () => {
           <S.Button onClick={() => setDarkMode(!darkMode)}>
             {darkMode ? (
               <>
-                <ToggleLeft size={44}
+                <ToggleLeft
+                  size={44}
                   style={{
                     color: theme === 'light' ? 'black' : 'white'
                   }}
@@ -111,7 +118,8 @@ export const Sidebar = () => {
               </>
             ) : (
               <>
-                <ToggleRight size={44} 
+                <ToggleRight
+                  size={44}
                   onClick={toggleTheme}
                   style={{
                     color: theme === 'light' ? 'black' : 'white'

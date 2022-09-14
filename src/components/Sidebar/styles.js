@@ -14,7 +14,7 @@ export const SidebarContainer = styled.aside`
   justify-content: space-between;
   pointer-events: all;
   transition: all 0.3s ease-in-out;
-  border-right: 1px solid #ccc;
+  border-right:${props => props.border};
 
   //create button to toggle sidebar open/close
 
