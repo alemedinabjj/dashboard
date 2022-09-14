@@ -1,8 +1,10 @@
 import * as S from './styles'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { dataButtons } from './data'
 import { Link, NavLink } from 'react-router-dom'
 import { useRef } from 'react'
+import { ToggleLeft, ToggleRight } from 'phosphor-react'
+import { ThemeContext } from '../../styles/ThemeProvider'
 
 const LinkStyle = {
   textDecoration: 'none',
@@ -22,7 +24,10 @@ const LinkStyle = {
 export const Sidebar = () => {
   const navRef = useRef(null)
   const [active, setActive] = useState(false)
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
+  const [darkMode, setDarkMode] = useState(false)
+
+  const { theme, toggleTheme } = useContext(ThemeContext)
 
   const handleToggle = () => {
     setActive(!active)
@@ -38,14 +43,21 @@ export const Sidebar = () => {
 
   return (
     <>
-      <S.SidebarContainer className={open ? 'open' : 'close'}>
-        <span onClick={handleOpen} ref={navRef}></span>
+      <S.SidebarContainer className={open ? 'open' : 'close'}
+        style={{
+          backgroundColor: theme === 'light' ? 'white' : 'rgb(21, 32, 43)',
+        }}
+      >
+        <span onClick={handleOpen} ref={navRef}>
+          {open ? '⇦' : '⇨'}
+        </span>
         <S.Content>
           <S.UserInfo>
             <img src="https://github.com/alemedinabjj.png" alt="" />
             <h2
               style={{
-                display: open ? 'block' : 'none'
+                display: open ? 'flex' : 'none',
+                color: theme === 'light' ? 'black' : 'white'
               }}
             >
               Alexandre Medina
@@ -59,12 +71,16 @@ export const Sidebar = () => {
                   className={
                     window.location.pathname === item.path ? 'active' : ''
                   }
+                  background={
+                    theme === 'light' ? 'rgb(29, 161, 242)' : ' rgb(30, 45, 59)'
+                  }
                   onClick={handleToggle}
                 >
                   <img src={item.icon} alt="" />
                   <p
                     style={{
-                      display: open ? 'block' : 'none'
+                      display: open ? 'block' : 'none',
+                      color: theme === 'light' ? 'black' : 'white'
                     }}
                   >
                     {item.label}
@@ -75,27 +91,56 @@ export const Sidebar = () => {
           </S.ButtonGroup>
         </S.Content>
         <S.ConfigArea>
-          <S.Button>
-            <img
-              src="https://img.icons8.com/ios/50/000000/settings.png"
-              alt=""
-            />
-            <p
-              style={{
-                display: open ? 'block' : 'none'
-              }}
-            >
-              Dark Mode
-            </p>
+          <S.Button onClick={() => setDarkMode(!darkMode)}>
+            {darkMode ? (
+              <>
+                <ToggleLeft size={44}
+                  style={{
+                    color: theme === 'light' ? 'black' : 'white'
+                  }}
+                  onClick={toggleTheme}
+                />
+                <p
+                  style={{
+                    display: open ? 'block' : 'none',
+                    color: theme === 'light' ? 'black' : 'white'
+                  }}
+                >
+                  Light Mode
+                </p>
+              </>
+            ) : (
+              <>
+                <ToggleRight size={44} 
+                  onClick={toggleTheme}
+                  style={{
+                    color: theme === 'light' ? 'black' : 'white'
+                  }}
+                />
+                <p
+                  style={{
+                    display: open ? 'block' : 'none',
+                    color: theme === 'light' ? 'black' : 'white'
+                  }}
+                >
+                  Dark Mode
+                </p>
+              </>
+            )}
           </S.Button>
-          <S.Button>
+          <S.Button
+            background={
+              theme === 'light' ? 'rgb(29, 161, 242)' : 'rgb(30, 45, 59)'
+            }
+          >
             <img
               src="https://img.icons8.com/ios/50/000000/settings.png"
               alt=""
             />
             <p
               style={{
-                display: open ? 'block' : 'none'
+                display: open ? 'block' : 'none',
+                color: theme === 'light' ? 'black' : 'white'
               }}
             >
               Logout

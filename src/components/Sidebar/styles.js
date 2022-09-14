@@ -3,17 +3,18 @@ import styled from 'styled-components'
 export const SidebarContainer = styled.aside`
   min-width: 300px;
   min-height: 100vh;
-  background-color: #242625;
+  background-color: rgb(21, 32, 43);
   position: sticky;
   top: 0;
   left: 0;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between; 
+  align-items: flex-start;
+  justify-content: space-between;
   pointer-events: all;
   transition: all 0.3s ease-in-out;
+  border-right: 1px solid #ccc;
 
   //create button to toggle sidebar open/close
 
@@ -23,20 +24,26 @@ export const SidebarContainer = styled.aside`
     right: -10px;
     width: 24px;
     height: 24px;
-    background-color: #A492FF;
+    background-color: #a492ff;
     border-radius: 50%;
     z-index: 1;
     cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #fff;
   }
 
   &.close {
     min-width: 10px;
-    span {
-      right: -10px;
+    align-items: flex-start;
+
+    &.open {
+      min-width: 300px;
     }
   }
-
-
 `
 
 export const Content = styled.div`
@@ -50,7 +57,7 @@ export const UserInfo = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
 
   margin-bottom: 5rem;
 
@@ -67,7 +74,7 @@ export const UserInfo = styled.div`
     font-size: 1rem;
     font-weight: 700;
     line-height: 1.5rem;
-
+    transition: all 0.3s ease-in-out;
   }
 `
 
@@ -85,8 +92,7 @@ export const Button = styled.button`
   width: 100%;
   height: 40px;
 
- 
-  background-color:${props => props.active ? '#1f1f1f' : 'transparent'};
+  background-color: transparent;
   border: none;
   border-radius: 8px;
   color: #fff;
@@ -98,10 +104,9 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   gap: 1rem;
-  
 
   &.active {
-    background-color: #1f1f1f;
+    background: ${props => props.background};
   }
 
   img {
@@ -110,7 +115,7 @@ export const Button = styled.button`
   }
 
   &:hover {
-    background-color: #1f1f1f;
+    background: ${props => props.background};
   }
 `
 
@@ -122,8 +127,6 @@ export const ConfigArea = styled.div`
   justify-content: space-around;
   gap: 1rem;
   align-self: flex-end;
-
-
 `
 
 export const DarkMode = styled.button`
