@@ -75,6 +75,10 @@ export const Button = styled.button`
   gap: 1rem;
   
 
+  &.active {
+    background-color: #1f1f1f;
+  }
+
   img {
     width: 30px;
     height: 30px;

@@ -1,7 +1,7 @@
 import * as S from './styles'
 import { useState } from 'react'
 import { dataButtons } from './data'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 const LinkStyle = {
   textDecoration: 'none',
@@ -14,7 +14,7 @@ const LinkStyle = {
 
   isActived: {
     backgroundColor: 'rgb(29, 161, 242)',
-    color: 'white',
+    color: 'white'
   }
 }
 
@@ -35,16 +35,18 @@ export const Sidebar = () => {
           </S.UserInfo>
           <S.ButtonGroup>
             {dataButtons.map(item => (
-              <Link
-                to={item.path}
-                key={item.id}
-                style={active ? LinkStyle.isActived : LinkStyle}
-              >
-                <S.Button key={item.id}>
+              <NavLink to={item.path} key={item.id} style={LinkStyle}>
+                <S.Button
+                  key={item.id}
+                  className={
+                    window.location.pathname === item.path ? 'active' : ''
+                  }
+                  onClick={handleToggle}
+                >
                   <img src={item.icon} alt={item.label} />
                   {item.label}
                 </S.Button>
-              </Link>
+              </NavLink>
             ))}
           </S.ButtonGroup>
         </S.Content>
