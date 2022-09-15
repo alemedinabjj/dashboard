@@ -29,6 +29,7 @@ export const Home = ({ handleOpenTransactionModal }) => {
       total: 0
     }
   )
+  
 
   console.log(transactions.map(transaction => transaction.type))
 
@@ -56,12 +57,16 @@ export const Home = ({ handleOpenTransactionModal }) => {
             </S.CardTitle>
             <CurrencyDollar size={32} color="green" />
           </S.HeaderCard>
-          <S.CardValue color={theme === 'light' ? 'black' : 'white'}>
+          <S.CardValue color={
+            summary.total >= 0 ? 'green' : 'red'
+          }
+        
+          >
             {' '}
             {new Intl.NumberFormat('pt-BR', {
               style: 'currency',
               currency: 'BRL'
-            }).format(summary.total)}
+            }).format(summary.total)} 
           </S.CardValue>
         </S.Card>
         <S.Card background={theme === 'light' ? 'white' : 'rgb(32, 48, 63)'}>

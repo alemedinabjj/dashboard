@@ -19,7 +19,8 @@ const LinkStyle = {
 export const Sidebar = () => {
   const navRef = useRef(null)
   const [active, setActive] = useState(false)
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(true)
+
   const [darkMode, setDarkMode] = useState(false)
 
   const { theme, toggleTheme } = useContext(ThemeContext)

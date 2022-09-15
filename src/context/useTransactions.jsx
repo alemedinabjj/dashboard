@@ -23,8 +23,13 @@ export const TransactionsProvider = ({ children }) => {
     setTransactions([transaction, ...transactions])
   }
 
+  const handleDelete = id => {
+    const newTransactions = transactions.filter(transaction => transaction.id !== id)
+    setTransactions(newTransactions)
+  }
+
   return (
-    <TransactionsContext.Provider value={{ transactions, addTransaction }}>
+    <TransactionsContext.Provider value={{ transactions, addTransaction, handleDelete }}>
       {children}
     </TransactionsContext.Provider>
   )

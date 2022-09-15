@@ -45,6 +45,7 @@ export const Card = styled.div`
 
   //create a card with a shadow
   background: ${props => props.background};
+
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
