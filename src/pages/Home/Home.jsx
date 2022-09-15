@@ -22,8 +22,8 @@ export const Home = ({ handleOpenTransactionModal }) => {
       }
 
       return acc
-    }
-    , {
+    },
+    {
       deposit: 0,
       withdraw: 0,
       total: 0
@@ -57,7 +57,7 @@ export const Home = ({ handleOpenTransactionModal }) => {
             <CurrencyDollar size={32} color="green" />
           </S.HeaderCard>
           <S.CardValue color={theme === 'light' ? 'black' : 'white'}>
-            R${' '}
+            {' '}
             {new Intl.NumberFormat('pt-BR', {
               style: 'currency',
               currency: 'BRL'
@@ -72,7 +72,7 @@ export const Home = ({ handleOpenTransactionModal }) => {
             <ArrowUp size={32} color="green" />
           </S.HeaderCard>
           <S.CardValue color={theme === 'light' ? 'black' : 'white'}>
-            R${' '}
+            {' '}
             {new Intl.NumberFormat('pt-BR', {
               style: 'currency',
               currency: 'BRL'
@@ -87,7 +87,7 @@ export const Home = ({ handleOpenTransactionModal }) => {
             <ArrowDown size={32} color="red" />
           </S.HeaderCard>
           <S.CardValue color={theme === 'light' ? 'black' : 'white'}>
-            R${' '}
+            {' '}
             {new Intl.NumberFormat('pt-BR', {
               style: 'currency',
               currency: 'BRL'
