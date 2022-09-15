@@ -83,3 +83,27 @@ export const CardValue = styled.h2`
   line-height: 56px;
   margin-top: 80px;
 `
+
+export const Button = styled.button`
+  display: flex;  
+  align-items: center;
+  justify-content: center;
+  justify-self: flex-end;
+  align-self: flex-end;
+  margin-right: 2rem;
+
+  width: 200px;
+  height: 50px;
+  border-radius: 8px;
+  border: 0;
+  background: ${props => props.background};
+  color: ${props => props.color};
+  font-weight: bold;
+  margin-top: 16px;
+  transition: filter 0.2s;
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+`
+

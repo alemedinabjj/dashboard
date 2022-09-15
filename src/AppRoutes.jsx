@@ -4,12 +4,25 @@ import { Explorer } from './pages/Explorer'
 import { Home } from './pages/Home/Home'
 import { Notifications } from './pages/Notifications/Notifications'
 
-export const AppRoutes = () => {
+export const AppRoutes = ({
+  handleCloseTransactionModal,
+  handleOpenTransactionModal,
+  isOpen,
+}) => {
   return (
     <BrowserRouter>
-    <Sidebar />
+      <Sidebar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <Home
+              handleCloseTransactionModal={handleCloseTransactionModal}
+              handleOpenTransactionModal={handleOpenTransactionModal}
+              isOpen={isOpen}
+            />
+          }
+        />
         <Route path="/explore" element={<Explorer />} />
         <Route path="/messages" element={<h1>Messages</h1>} />
         <Route path="/bookmarks" element={<h1>Bookmarks</h1>} />
