@@ -20,7 +20,30 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     min-height: 100vh;
+
+    &.dark {
+      background-color: #000;
+      color: #fff;
+
+      a {
+        color: #fff;
+      }
+
+
+    }
+
+    &.light {
+      background-color: #fff;
+      color: #000;
+
+      a {
+        color: #000;
+
+      }
+    }
   }
+
+ 
 
   a {
     text-decoration: none;
@@ -46,6 +69,27 @@ export const GlobalStyle = createGlobalStyle`
   main {
     display: flex;
     flex-direction: row;
+
+    &.dark {
+      background-color: #000;
+      color: #fff;
+
+      a {
+        color: #fff;
+      }
+
+
+    }
+
+    &.light {
+      background-color: #fff;
+      color: #000;
+
+      a {
+        color: #000;
+
+      }
+    }
   }
 
 `

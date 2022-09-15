@@ -13,12 +13,7 @@ const LinkStyle = {
   height: '40px',
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center',
-
-  isActived: {
-    backgroundColor: 'rgb(29, 161, 242)',
-    color: 'white'
-  }
+  justifyContent: 'center'
 }
 
 export const Sidebar = () => {
@@ -54,7 +49,7 @@ export const Sidebar = () => {
             : '1px solid rgb(30, 45, 59)'
         }
       >
-        <span onClick={handleOpen} ref={navRef}>
+        <span className="openCloseButton" onClick={handleOpen} ref={navRef}>
           {open ? '⇦' : '⇨'}
         </span>
         <S.Content>
@@ -82,7 +77,7 @@ export const Sidebar = () => {
                   }
                   onClick={handleToggle}
                 >
-                  <img src={item.icon} alt="" />
+                  {item.icon}
                   <p
                     style={{
                       display: open ? 'block' : 'none',
@@ -91,6 +86,9 @@ export const Sidebar = () => {
                   >
                     {item.label}
                   </p>
+                  {item?.haveNotification && (
+                    <span className="notification">1</span>
+                  )}
                 </S.Button>
               </NavLink>
             ))}

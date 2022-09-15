@@ -14,17 +14,18 @@ export const SidebarContainer = styled.aside`
   justify-content: space-between;
   pointer-events: all;
   transition: all 0.3s ease-in-out;
-  border-right:${props => props.border};
+  border-right: ${props => props.border};
 
   //create button to toggle sidebar open/close
 
-  span {
+  .openCloseButton {
     position: absolute;
     top: 40px;
     right: -10px;
-    width: 24px;
-    height: 24px;
-    background-color: #a492ff;
+    width: 34px;
+    height: 34px;
+    background-color: rgb(30, 45, 59);
+    border: 1px solid white;
     border-radius: 50%;
     z-index: 1;
     cursor: pointer;
@@ -39,10 +40,9 @@ export const SidebarContainer = styled.aside`
   &.close {
     min-width: 10px;
     align-items: flex-start;
-
-    &.open {
-      min-width: 300px;
-    }
+  }
+  &.open {
+    min-width: 300px;
   }
 `
 
@@ -105,6 +105,8 @@ export const Button = styled.button`
   align-items: center;
   gap: 1rem;
 
+  position: relative;
+
   &.active {
     background: ${props => props.background};
   }
@@ -112,6 +114,25 @@ export const Button = styled.button`
   img {
     width: 30px;
     height: 30px;
+  }
+
+  p {
+    position: relative;
+  }
+
+  .notification {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;
+    color: #fff;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0.4rem;
+    right: 0.4rem;
   }
 
   &:hover {
