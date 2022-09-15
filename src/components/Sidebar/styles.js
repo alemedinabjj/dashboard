@@ -16,6 +16,8 @@ export const SidebarContainer = styled.aside`
   transition: all 0.3s ease-in-out;
   border-right: ${props => props.border};
 
+
+
   //create button to toggle sidebar open/close
 
   .openCloseButton {

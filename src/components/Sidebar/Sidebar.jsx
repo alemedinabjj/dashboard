@@ -6,6 +6,8 @@ import { useRef } from 'react'
 import { ToggleLeft, ToggleRight } from 'phosphor-react'
 import { ThemeContext } from '../../styles/ThemeProvider'
 
+import { useTransactions } from '../../context/useTransactions'
+
 const LinkStyle = {
   textDecoration: 'none',
   color: 'inherit',
@@ -20,6 +22,7 @@ export const Sidebar = () => {
   const navRef = useRef(null)
   const [active, setActive] = useState(false)
   const [open, setOpen] = useState(true)
+  const { summary } = useTransactions()
 
   const [darkMode, setDarkMode] = useState(false)
 
@@ -87,7 +90,8 @@ export const Sidebar = () => {
                   >
                     {item.label}
                   </p>
-                  {item?.haveNotification && (
+
+                  {summary.total < 0 && item?.haveNotification && (
                     <span className="notification">1</span>
                   )}
                 </S.Button>

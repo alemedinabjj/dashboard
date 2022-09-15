@@ -9,26 +9,9 @@ import { useTransactions } from '../../context/useTransactions'
 
 export const Home = ({ handleOpenTransactionModal }) => {
   const { theme } = useContext(ThemeContext)
-  const { transactions } = useTransactions()
+  const { transactions, summary } = useTransactions()
 
-  const summary = transactions.reduce(
-    (acc, transaction) => {
-      if (transaction.type === 'deposit') {
-        acc.deposit += Number(transaction.amount)
-        acc.total += Number(transaction.amount)
-      } else {
-        acc.withdraw += Number(transaction.amount)
-        acc.total -= Number(transaction.amount)
-      }
 
-      return acc
-    },
-    {
-      deposit: 0,
-      withdraw: 0,
-      total: 0
-    }
-  )
   
 
   console.log(transactions.map(transaction => transaction.type))

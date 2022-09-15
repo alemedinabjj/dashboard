@@ -28,8 +28,27 @@ export const TransactionsProvider = ({ children }) => {
     setTransactions(newTransactions)
   }
 
+  const summary = transactions.reduce(
+    (acc, transaction) => {
+      if (transaction.type === 'deposit') {
+        acc.deposit += Number(transaction.amount)
+        acc.total += Number(transaction.amount)
+      } else {
+        acc.withdraw += Number(transaction.amount)
+        acc.total -= Number(transaction.amount)
+      }
+
+      return acc
+    },
+    {
+      deposit: 0,
+      withdraw: 0,
+      total: 0
+    }
+  )
+
   return (
-    <TransactionsContext.Provider value={{ transactions, addTransaction, handleDelete }}>
+    <TransactionsContext.Provider value={{ transactions, addTransaction, handleDelete, summary }}>
       {children}
     </TransactionsContext.Provider>
   )

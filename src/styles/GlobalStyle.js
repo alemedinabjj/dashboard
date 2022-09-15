@@ -51,6 +51,7 @@ export const GlobalStyle = createGlobalStyle`
     max-width: 2320px;
     margin: 0 auto;
     
+    
 
     &.dark {
       background-color: #000;
