@@ -20,6 +20,16 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     min-height: 100vh;
+
+    &.dark {
+      background: #1a1a1a;
+      color: #fff;
+    }
+
+    &.light {
+      background: #fff;
+      color: #1a1a1a;
+    }
  
   }
 
@@ -52,28 +62,7 @@ export const GlobalStyle = createGlobalStyle`
     max-width: 2320px;
     margin: 0 auto;
     
-    
-
-    &.dark {
-      background-color: #000;
-      color: #fff;
-
-      a {
-        color: #fff;
-      }
-
-
-    }
-
-    &.light {
-      background-color: #fff;
-      color: #000;
-
-      a {
-        color: #000;
-
-      }
-    }
+    background: transparent;
   }
 
   .ReactModal__Overlay{ 

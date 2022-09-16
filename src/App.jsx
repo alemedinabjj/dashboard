@@ -7,6 +7,8 @@ import { useState } from 'react'
 import Modal from 'react-modal'
 import { NewTransaction } from './components/newTransaction/NewTransaction'
 
+import { useContext } from 'react'
+
 Modal.setAppElement('#root')
 
 function App() {
@@ -30,7 +32,10 @@ function App() {
               handleOpenTransactionModal={handleOpenTransactionModal}
               handleCloseTransactionModal={handleCloseTransactionModal}
             />
-            <NewTransaction isOpen={transactionModalIsOpen} onClose={handleCloseTransactionModal} />
+            <NewTransaction
+              isOpen={transactionModalIsOpen}
+              onClose={handleCloseTransactionModal}
+            />
           </main>
         </AuthContextProvider>
       </ThemeProvider>

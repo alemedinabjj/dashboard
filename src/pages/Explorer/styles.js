@@ -56,7 +56,7 @@ export const Card = styled.div`
 
   border-radius: 8px;
   padding: 15px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow:${props => props.shadow};
   transition: transform 0.2s;
 
   margin-top: 1.5rem;

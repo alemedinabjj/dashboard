@@ -1,30 +1,25 @@
-import axios from 'axios'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useMemo, useState } from 'react'
 import { ThemeContext } from '../../styles/ThemeProvider'
 import * as S from './styles'
-import api from '../../services/api'
-
+import api, { ALL_COINS } from '../../services/api'
+import { Link } from 'react-router-dom'
 
 export const Explorer = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext)
+  const { theme } = useContext(ThemeContext)
 
-  //api notices economy
   const [notices, setNotices] = useState([])
 
-  const getFetch = async () => {
-    try {
-      const response = await api.get()
-      const data = response.data
-      setNotices(data)
-      console.log(data)
-    } catch (error) {
-      console.log(error)
+  const getFetch = useMemo(() => {
+    const fetchNotices = async () => {
+      const response = await api.get(ALL_COINS)
+      setNotices(response.data)
     }
-  }
+    fetchNotices()
+  }, [])
 
   useEffect(() => {
-    getFetch()
-  }, [])
+    getFetch
+  }, [getFetch])
 
   return (
     <S.Container
@@ -38,9 +33,14 @@ export const Explorer = () => {
       <S.Content>
         {notices.map(notice => {
           return (
-            <S.Card key={notice.id}>
+            <S.Card
+              key={notice.id}
+              shadow={theme === 'light' && '0px 0px 10px 0px rgba(0,0,0,0.07)'}
+            >
               <h2>{notice.name}</h2>
               <img src={notice.image} alt={notice.name} />
+              <p>{notice.description}</p>
+              <Link to={`/detailsexplorer/${notice.id}`}>Saiba mais</Link>
             </S.Card>
           )
         })}
