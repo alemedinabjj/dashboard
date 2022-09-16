@@ -105,9 +105,9 @@ export const NewTransaction = ({ onClose, isOpen, transaction }) => {
 
           <S.Button className="btn">Add transaction</S.Button>
         </S.Form>
-        <S.Button className="btn" onClick={onClose}>
+        <S.ButtonClose className="btn" onClick={onClose}>
           Close
-        </S.Button>
+        </S.ButtonClose>
       </S.Container>
     </Modal>
   )

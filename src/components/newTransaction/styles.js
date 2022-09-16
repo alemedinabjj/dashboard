@@ -41,7 +41,7 @@ export const Input = styled.input`
 `
 
 export const Button = styled.button`
-  width: fit-content;
+  width: 100%;
   height: 40px;
   margin-bottom: 20px;
   padding: 0 10px;
@@ -78,5 +78,28 @@ export const Select = styled.select`
     white-space: pre;
     min-height: 20px;
     padding: 0px 2px 1px;
+  }
+`
+
+export const ButtonClose = styled.button`
+  width: 40px;
+  height: 40px;
+  margin-bottom: 20px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f44336;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  right: 1.5rem;
+  top: 1.5rem;
+  border: 0;
+  background: transparent;
+  transition: all 0.3s;
+  &:hover {
+    filter: brightness(0.9);
   }
 `

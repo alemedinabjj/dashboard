@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Sidebar } from './components/Sidebar/Sidebar'
-import { Explorer } from './pages/Explorer'
+import { DetailsExplorer } from './pages/DetailsExplorer/DetailsExplorer'
+import { Explorer } from './pages/Explorer/Explorer'
 import { Home } from './pages/Home/Home'
 import { Notifications } from './pages/Notifications/Notifications'
 
@@ -8,6 +9,7 @@ export const AppRoutes = ({
   handleCloseTransactionModal,
   handleOpenTransactionModal,
   isOpen,
+  notices,
 }) => {
   return (
     <BrowserRouter>
@@ -23,7 +25,8 @@ export const AppRoutes = ({
             />
           }
         />
-        <Route path="/explore" element={<Explorer />} />
+        <Route path="/explore" element={<Explorer  />} />
+        <Route path="/detailsexplorer/:id" element={<DetailsExplorer notices={notices} />} />
         <Route path="/messages" element={<h1>Messages</h1>} />
         <Route path="/bookmarks" element={<h1>Bookmarks</h1>} />
         <Route path="/lists" element={<h1>Lists</h1>} />

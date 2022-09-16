@@ -16,14 +16,14 @@ export const Container = styled.div`
 `
 
 export const Title = styled.h1`
-  font-size: 48px;
+  font-size: 35px;
   color: ${props => props.color};
   line-height: 56px;
   margin-top: 80px;
 `
 
 export const SubTitle = styled.h2`
-  font-size: 24px;
+  font-size: 20px;
   color: ${props => props.color};
   line-height: 56px;
   margin-top: 80px;
@@ -47,7 +47,7 @@ export const Card = styled.div`
   background: ${props => props.background};
 
   border-radius: 8px;
-  padding: 20px;
+  padding: 15px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
 
@@ -66,7 +66,7 @@ export const HeaderCard = styled.div`
 `
 
 export const CardTitle = styled.h2`
-  font-size: 24px;
+  font-size: 19px;
   color: ${props => props.color};
   max-width: 450px;
   line-height: 56px;
@@ -78,7 +78,7 @@ export const CardTitle = styled.h2`
 `
 
 export const CardValue = styled.h2`
-  font-size: 34px;
+  font-size: 24px;
   color: ${props => props.color};
   max-width: 450px;
   line-height: 56px;

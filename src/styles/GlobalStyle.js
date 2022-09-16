@@ -20,6 +20,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     min-height: 100vh;
+ 
   }
 
  
@@ -74,5 +75,31 @@ export const GlobalStyle = createGlobalStyle`
       }
     }
   }
+
+  .ReactModal__Overlay{ 
+
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .ReactModal__Overlay--after-open{
+      background-color: rgb(32 32 32 / 75%)!important;
+    }
+
+    .ReactModal__Content{
+        width: 100%;
+        max-width: 576px;
+        padding: 3rem;
+        position: relative;
+        border-radius: .25rem;
+
+    }
 
 `
