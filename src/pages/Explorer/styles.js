@@ -63,6 +63,12 @@ export const Card = styled.div`
 
   cursor: pointer;
 
+
+  a {
+    text-decoration: none;
+    color: ${props => props.color};
+  }
+
   &:hover {
     transform: translateX(10px);
   }
@@ -71,5 +77,21 @@ export const Card = styled.div`
     width: 5rem;
     height: 5rem;
     border-radius: 8px;
+  }
+`
+
+export const Button = styled.button`
+  width: 100%;
+  padding: .3rem 1.2rem;
+  border: 0;
+  border-radius: 0.25rem;
+  background: ${props => props.background};
+  color: ${props => props.color};
+  font-weight: 100;
+  margin-top: .5rem;
+  transition: filter 0.2s;
+
+  &:hover {
+    filter: brightness(0.9);
   }
 `

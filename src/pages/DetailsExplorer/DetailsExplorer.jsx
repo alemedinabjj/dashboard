@@ -33,93 +33,112 @@ export const DetailsExplorer = () => {
     >
       <S.Content>
         {notice.map(item => (
-          <S.Card key={item.id} color={theme === 'light' ? 'black' : 'white'}>
-            <S.Title>{item.name}</S.Title>
+          <div>
+            <S.Title color={theme === 'light' ? 'black' : 'white'}>
+              {item.name}
+            </S.Title>
             <img src={item.image} alt={item.name} />
-            <p>
-              <span>Preço atual:</span>{' '}
-              {item.current_price.toLocaleString('pt-BR', {
-                style: 'currency',
-                currency: 'BRL'
-              })}
-            </p>
-            <p>
-              <span>Rank: </span>
-              {item.market_cap_rank}
-            </p>
-            <p>
-              <span>Market Cap: </span>
-              {item.market_cap}
-            </p>
+          </div>
+        ))}
+        <S.Table
+          color={theme === 'light' ? 'black' : 'white'}
+          background={theme === 'light' ? '#f0f0f0' : 'rgb(24, 37, 51)'}
+        >
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Preço</th>
+              <th>Rank</th>
+              <th>Market Cap</th>
+              <th>Volume 24h</th>
+              <th>Variação 24h</th>
+            </tr>
+          </thead>
+          <tbody>
+            {notice.map(item => (
+              <>
+                <tr>
+                  <td>{item.name}</td>
+                  <td
+                    style={{
+                      color:
+                        item.price_change_percentage_24h > 0 ? 'green' : 'red'
+                    }}
+                  >
+                    {item.current_price.toLocaleString('en-us', {
+                      style: 'currency',
+                      currency: 'USD'
+                    })}
+                  </td>
 
-            <p>
-              <span>High 24h: </span>
-              {item.high_24h.toLocaleString('pt-BR', {
-                style: 'currency',
-                currency: 'BRL'
-              })}
-            </p>
-            <p>
-              <span>Low 24h: </span>
-              {item.low_24h
-                .toLocaleString('pt-BR', {
-                  style: 'currency',
-                  currency: 'BRL'
-                })
-                .replace('-', '')}
-            </p>
-            <p>
-              <span>Price Change 24h: </span>
-              {item.price_change_24h
-                .toLocaleString('pt-BR', {
-                  style: 'currency',
-                  currency: 'BRL'
-                })
-                .replace('-', '')}
-            </p>
-            <p>
-              <span>Price Change Percentage 24h: </span>
-              {item.price_change_percentage_24h}
-            </p>
-            <p>
-              <span>Total Volume: </span>
-              {item.total_volume}
-            </p>
+                  <td
+                    style={{
+                      color:
+                        item.price_change_percentage_24h > 0 ? 'green' : 'red'
+                    }}
+                  >
+                    {item.market_cap_rank}
+                  </td>
+                  <td
+                    style={{
+                      color:
+                        item.market_cap_change_percentage_24h > 0
+                          ? 'green'
+                          : 'red'
+                    }}
+                  >
+                    {item.market_cap
+                      .toLocaleString('en-us', {
+                        style: 'currency',
+                        currency: 'USD'
+                      })
+                      .replace('$', '')}
+                    %
+                  </td>
 
-            <p>
-              <span>Market Cap Change 24h: </span>
-              {item.market_cap_change_24h}
-            </p>
+                  <td
+                    style={
+                      item.price_change_percentage_24h > 0
+                        ? { color: 'green' }
+                        : { color: 'red' }
+                    }
+                  >
+                    {
+                      //volume 24h format
+                      item.total_volume.toLocaleString('en-us', {
+                        style: 'currency',
+                        currency: 'USD'
+                      })
+                    }
+                  </td>
 
-            <p>
-              <span>Market Cap Change Percentage 24h: </span>
-              {item.market_cap_change_percentage_24h}
-            </p>
-
-            <p>
-              <span>Circulating Supply: </span>
-              {item.circulating_supply}
-            </p>
-
-            <p>
-              <span>Total Supply: </span>
-              {item.total_supply}
-            </p>
-
-            <p>
-              <span>Max Supply: </span>
-              {item.max_supply}
-            </p>
-            <S.Google>
-              <a
-                href={`https://www.google.com/search?q=${item.name}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Pesquisar no Google
-              </a>
-            </S.Google>
-          </S.Card>
+                  <td
+                    style={
+                      item.price_change_percentage_24h > 0
+                        ? { color: 'green' }
+                        : { color: 'red' }
+                    }
+                  >
+                    {item.price_change_percentage_24h.toLocaleString('en-us', {
+                      style: 'currency',
+                      currency: 'USD'
+                    })}
+                  </td>
+                </tr>
+              </>
+            ))}
+          </tbody>
+        </S.Table>
+        {notice.map(item => (
+          <S.Google>
+            <a
+              href={`https://www.google.com/search?q=${item.name}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Pesquisar no Google
+            </a>
+          </S.Google>
         ))}
       </S.Content>
       <S.Button

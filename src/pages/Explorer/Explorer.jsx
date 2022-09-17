@@ -40,7 +40,12 @@ export const Explorer = () => {
               <h2>{notice.name}</h2>
               <img src={notice.image} alt={notice.name} />
               <p>{notice.description}</p>
-              <Link to={`/detailsexplorer/${notice.id}`}>Saiba mais</Link>
+              <Link to={`/detailsexplorer/${notice.id}`}>
+                <S.Button
+                  color={theme === 'light' ? 'black' : 'white'}
+                  background={theme === 'light' ? 'white' : 'rgb(21, 32, 43)'}
+                >Saiba mais</S.Button>
+              </Link>
             </S.Card>
           )
         })}
