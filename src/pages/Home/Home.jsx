@@ -9,12 +9,12 @@ import { useTransactions } from '../../context/useTransactions'
 
 export const Home = ({ handleOpenTransactionModal }) => {
   const { theme } = useContext(ThemeContext)
-  const { transactions, summary } = useTransactions()
+  const { transactions } = useTransactions()
 
 
   
 
-  console.log(transactions.map(transaction => transaction.type))
+  console.log(transactions)
 
   return (
     <S.Container
@@ -41,15 +41,11 @@ export const Home = ({ handleOpenTransactionModal }) => {
             <CurrencyDollar size={32} color="green" />
           </S.HeaderCard>
           <S.CardValue color={
-            summary.total >= 0 ? 'green' : 'red'
+           `red`
           }
         
           >
-            {' '}
-            {new Intl.NumberFormat('pt-BR', {
-              style: 'currency',
-              currency: 'BRL'
-            }).format(summary.total)} 
+            R$ 0,00
           </S.CardValue>
         </S.Card>
         <S.Card background={theme === 'light' ? 'white' : 'rgb(32, 48, 63)'}>
@@ -61,10 +57,7 @@ export const Home = ({ handleOpenTransactionModal }) => {
           </S.HeaderCard>
           <S.CardValue color={theme === 'light' ? 'black' : 'white'}>
             {' '}
-            {new Intl.NumberFormat('pt-BR', {
-              style: 'currency',
-              currency: 'BRL'
-            }).format(summary.deposit)}
+            R$ 0,00
           </S.CardValue>
         </S.Card>
         <S.Card background={theme === 'light' ? 'white' : 'rgb(32, 48, 63)'}>
@@ -76,10 +69,7 @@ export const Home = ({ handleOpenTransactionModal }) => {
           </S.HeaderCard>
           <S.CardValue color={theme === 'light' ? 'black' : 'white'}>
             {' '}
-            {new Intl.NumberFormat('pt-BR', {
-              style: 'currency',
-              currency: 'BRL'
-            }).format(summary.withdraw)}
+            R$ 0,00
           </S.CardValue>
         </S.Card>
       </S.Content>

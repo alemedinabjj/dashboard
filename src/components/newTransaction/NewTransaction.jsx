@@ -6,7 +6,7 @@ import Modal from 'react-modal'
 import { useContext } from 'react'
 
 export const NewTransaction = ({ onClose, isOpen, transaction }) => {
-  const { addTransaction, transactions } = useTransactions()
+  const { newTransaction, transactions } = useTransactions()
   const [description, setDescription] = useState('')
   const [amount, setAmount] = useState(0)
   const [date, setDate] = useState(new Date())
@@ -18,14 +18,14 @@ export const NewTransaction = ({ onClose, isOpen, transaction }) => {
   const handleSubmit = async e => {
     e.preventDefault()
 
-    await addTransaction({
+    await newTransaction({
       description,
       amount,
       date,
       type,
       id
     })
-
+  
     setDescription('')
     setAmount(0)
     setDate(new Date())

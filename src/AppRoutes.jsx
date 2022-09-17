@@ -14,15 +14,15 @@ export const AppRoutes = ({
   notices,
 }) => {
 
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
 
-  const handleLoginData = () =>{
+  // const handleLoginData = () =>{
     
-  }
+  // }
 
-  if (!user) {
-   return  <Login />
-  }
+  // if (!user) {
+  //  return  <Login />
+  // }
 
   return (
     <BrowserRouter>

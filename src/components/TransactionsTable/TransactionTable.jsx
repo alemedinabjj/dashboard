@@ -8,9 +8,9 @@ export const TransactionTable = () => {
   const { transactions, handleDelete } = useTransactions()
   const { theme } = useContext(ThemeContext)
 
-  transactions.map(transaction => {
-    console.log(transaction)
-  })
+  // transactions.map(transaction => {
+  //   console.log(transaction)
+  // })
 
   const DarkModeTable = {
     backgroundColor: 'rgb(30, 45, 59)',
@@ -40,7 +40,7 @@ export const TransactionTable = () => {
             : LightModeTable.backgroundColor
         }
       >
-        <thead>
+        {/* <thead>
           <tr>
             <th scope="col">Data</th>
             <th scope="col">Descrição</th>
@@ -50,8 +50,8 @@ export const TransactionTable = () => {
         <tbody>
           {transactions.map(transaction => (
             <tr key={transaction.id}>
-              <td>{formatDate(transaction.date)}</td>
-              <td>{transaction.description}</td>
+              <td>{formatDate(transaction.createdAt)}</td>
+              <td>{transaction.category}</td>
               <td>
                 {transaction.type === 'deposit' ? (
                   <span style={{ color: '#12A454' }}>
@@ -77,7 +77,7 @@ export const TransactionTable = () => {
               </Button>
             </tr>
           ))}
-        </tbody>
+        </tbody> */}
       </Table>
     </Container>
   )

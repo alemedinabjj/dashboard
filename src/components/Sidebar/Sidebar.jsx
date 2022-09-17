@@ -91,9 +91,7 @@ export const Sidebar = () => {
                     {item.label}
                   </p>
 
-                  {summary.total < 0 && item?.haveNotification && (
-                    <span className="notification">1</span>
-                  )}
+                 
                 </S.Button>
               </NavLink>
             ))}
