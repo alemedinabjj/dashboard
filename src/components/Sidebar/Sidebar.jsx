@@ -61,7 +61,14 @@ export const Sidebar = () => {
         </span>
         <S.Content>
           <S.UserInfo>
-            <img src={user.avatar} alt="" />
+            <img
+              src={
+                user.avatar
+                  ? user.avatar
+                  : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+              }
+              alt="avatar"
+            />
             <h2
               style={{
                 display: open ? 'flex' : 'none',

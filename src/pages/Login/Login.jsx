@@ -1,6 +1,6 @@
 import * as S from './styles'
 import { AuthContext } from '../../context/AuthContext'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { auth } from '../../services/firebase'
 import { useRef } from 'react'
 import Google from '../../assets/icons/Google.svg'
@@ -46,6 +46,9 @@ export const Login = () => {
       .catch(error => {
         alert(error.message)
       })
+
+    setShowInputs(false)
+    alert('Account created successfully')
   }
 
   const signIn = e => {
@@ -67,6 +70,28 @@ export const Login = () => {
         alert(error.message)
       })
   }
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if (user) {
+        const { displayName, email, uid } = user
+
+        if (!displayName) {
+          throw new Error('Missing information from Google Account.')
+        }
+
+        setUser({
+          id: uid,
+          name: displayName,
+          email: email
+        })
+      }
+    })
+
+    return () => {
+      unsubscribe()
+    }
+  }, [])
 
   return (
     <S.Container>
