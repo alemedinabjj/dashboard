@@ -97,7 +97,9 @@ export const Login = () => {
     <S.Container>
       <S.Content>
         {' '}
-        <h1>Login</h1>
+        <h1>
+          {showInputs ? 'Create an account' : 'Login'}
+        </h1>
         <S.Form action="">
           <S.Input type="email" placeholder="Email" ref={emailRef} />
           <S.Input
