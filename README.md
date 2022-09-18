@@ -8,6 +8,7 @@
 ![Resultado final do projeto](https://github.com/alemedinabjj/dashboard/blob/main/src/assets/preview/image2.png)
 ![Resultado final do projeto](https://github.com/alemedinabjj/dashboard/blob/main/src/assets/preview/image3.png)
 ![Resultado final do projeto](https://github.com/alemedinabjj/dashboard/blob/main/src/assets/preview/image4.png)
+![Resultado final do projeto](https://github.com/alemedinabjj/dashboard/blob/main/src/assets/preview/image5.png)
 ![Resultado final do projeto](https://github.com/alemedinabjj/dashboard/blob/main/src/assets/preview/lightmode.png)
 ## 📝 Descrição 
 
@@ -20,8 +21,8 @@ Utilizando firebase(storage) como banco.
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - ReactJS
-- Typescript
-- Firebase (storage)
+- Javascript
+- Firebase (storage, auth)
 - Vite
 - Phosphor Icons
 - Styled Components
@@ -36,21 +37,18 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 <p align="left">
  
- <a href="https://www.linkedin.com/in/evander-inacio" alt="Linkedin">
+ <a href="" alt="Linkedin">
   <img src="https://img.shields.io/badge/-Linkedin-0A66C2?style=for-the-badge&logo=Linkedin&logoColor=FFFFFF&link=https://www.linkedin.com/in/alemedinabjj"/> 
  </a>
  
- <a href="https://www.facebook.com/evandder.lopes" alt="Facebook">
+ <a href="" alt="Facebook">
   <img src="https://img.shields.io/badge/-Facebook-000dff?style=for-the-badge&logo=Facebook&logoColor=FFFFFF&link=https://www.facebook.com/alexandre.medina"/> 
  </a>
  
- <a href="https://twitter.com/Evander_Inacio" alt="Twitter">
+ <a href="" alt="Twitter">
   <img src="https://img.shields.io/badge/-Twitter-1DA1F2?style=for-the-badge&logo=Twitter&logoColor=FFFFFF&link=https://twitter.com/alemedinabjj"/> 
  </a>
 
-  <a href="https://www.evanderinacio.com/" alt="Portfolio">
-  <img src="https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white&link=https://www.evanderinacio.com/"/>
- </a>
 
  </p>
 
