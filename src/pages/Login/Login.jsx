@@ -71,27 +71,27 @@ export const Login = () => {
       })
   }
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
-      if (user) {
-        const { displayName, email, uid } = user
+  // useEffect(() => {
+  //   const unsubscribe = auth.onAuthStateChanged(user => {
+  //     if (user) {
+  //       const { displayName, email, uid } = user
 
-        if (!displayName) {
-          throw new Error('Missing information from Google Account.')
-        }
+  //       if (!displayName) {
+  //         throw new Error('Missing information from Google Account.')
+  //       }
 
-        setUser({
-          id: uid,
-          name: displayName,
-          email: email
-        })
-      }
-    })
+  //       setUser({
+  //         id: uid,
+  //         name: displayName,
+  //         email: email
+  //       })
+  //     }
+  //   })
 
-    return () => {
-      unsubscribe()
-    }
-  }, [])
+  //   return () => {
+  //     unsubscribe()
+  //   }
+  // }, [])
 
   return (
     <S.Container>
