@@ -17,7 +17,6 @@ export const SidebarContainer = styled.aside`
   transition: all 0.3s ease-in-out;
   border-right: ${props => props.border};
 
-
   //create button to toggle sidebar open/close
 
   .openCloseButton {
@@ -164,5 +163,47 @@ export const DarkMode = styled.button`
   img {
     width: 30px;
     height: 30px;
+  }
+`
+export const Form = styled.form`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+`
+
+export const Label = styled.label`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: #fff;
+`
+
+export const Icon = styled.img`
+  width: 30px;
+  height: 30px;
+`
+
+export const Input = styled.input`
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  padding-inline: 1rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: rgb(30, 45, 59);
+  transition: all 0.2s ease-in-out;
+
+  &:focus {
+    outline: none;
+    background-color: rgb(21, 32, 43);
   }
 `
