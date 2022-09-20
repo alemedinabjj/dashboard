@@ -6,10 +6,17 @@ import * as S from './styles'
 import { TransactionTable } from '../../components/TransactionsTable/TransactionTable'
 import { NewTransaction } from '../../components/newTransaction/NewTransaction'
 import { useTransactions } from '../../context/useTransactions'
+import { AuthContext } from '../../context/AuthContext'
 
 export const Home = ({ handleOpenTransactionModal }) => {
   const { theme } = useContext(ThemeContext)
+<<<<<<< HEAD
   const { transactions } = useTransactions()
+=======
+  const { transactions, summary } = useTransactions()
+  const { user } = useContext(AuthContext)
+
+>>>>>>> main
 
 
   
@@ -22,7 +29,7 @@ export const Home = ({ handleOpenTransactionModal }) => {
       color={theme === 'light' ? 'black' : 'white'}
     >
       <S.Title color={theme === 'light' ? 'black' : 'white'}>
-        Olá, seja bem vindo Alexandre
+        Olá, seja bem vindo {user.name}
       </S.Title>
       <S.Button onClick={handleOpenTransactionModal}>
         <CurrencyDollar size={24} />

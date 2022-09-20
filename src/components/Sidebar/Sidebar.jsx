@@ -5,6 +5,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { useRef } from 'react'
 import { ToggleLeft, ToggleRight } from 'phosphor-react'
 import { ThemeContext } from '../../styles/ThemeProvider'
+import { AuthContext } from '../../context/AuthContext'
 
 import { useTransactions } from '../../context/useTransactions'
 
@@ -19,6 +20,8 @@ const LinkStyle = {
 }
 
 export const Sidebar = () => {
+  const { user, handleLogout } = useContext(AuthContext)
+
   const navRef = useRef(null)
   const [active, setActive] = useState(false)
   const [open, setOpen] = useState(true)
@@ -58,14 +61,21 @@ export const Sidebar = () => {
         </span>
         <S.Content>
           <S.UserInfo>
-            <img src="https://github.com/alemedinabjj.png" alt="" />
+            <img
+              src={
+                user.avatar
+                  ? user.avatar
+                  : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+              }
+              alt="avatar"
+            />
             <h2
               style={{
                 display: open ? 'flex' : 'none',
                 color: theme === 'light' ? 'black' : 'white'
               }}
             >
-              Alexandre Medina
+              {user.name}
             </h2>
           </S.UserInfo>
           <S.ButtonGroup>
@@ -138,6 +148,7 @@ export const Sidebar = () => {
             )}
           </S.Button>
           <S.Button
+            onClick={handleLogout}
             background={
               theme === 'light' ? 'rgb(29, 161, 242)' : 'rgb(30, 45, 59)'
             }

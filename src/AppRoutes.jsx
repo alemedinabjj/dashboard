@@ -11,7 +11,7 @@ export const AppRoutes = ({
   handleCloseTransactionModal,
   handleOpenTransactionModal,
   isOpen,
-  notices,
+  notices
 }) => {
 
   // const [user, setUser] = useState(null);
@@ -38,8 +38,11 @@ export const AppRoutes = ({
             />
           }
         />
-        <Route path="/explore" element={<Explorer  />} />
-        <Route path="/detailsexplorer/:id" element={<DetailsExplorer notices={notices} />} />
+        <Route path="/explore" element={<Explorer />} />
+        <Route
+          path="/detailsexplorer/:id"
+          element={<DetailsExplorer notices={notices} />}
+        />
         <Route path="/messages" element={<h1>Messages</h1>} />
         <Route path="/bookmarks" element={<h1>Bookmarks</h1>} />
         <Route path="/lists" element={<h1>Lists</h1>} />

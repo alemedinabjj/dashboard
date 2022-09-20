@@ -1,31 +1,91 @@
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
+import { Route } from 'react-router-dom'
+import { firebase, auth } from '../services/firebase'
 
 export const AuthContext = createContext(null)
 
 export const AuthContextProvider = ({ children }) => {
-  const [isAuth, setIsAuth] = useState(false)
+  const [user, setUser] = useState()
 
-  const value = {
-    isAuth,
-    activateAuth: () => {
-      setIsAuth(true)
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if (user) {
+        const { displayName, photoURL, uid } = user
+
+        if (!displayName || !photoURL) {
+          throw new Error('Missing information from Google Account.')
+        }
+
+        setUser({
+          id: uid,
+          name: displayName,
+          avatar: photoURL
+        })
+      }
+    })
+
+    return () => {
+      unsubscribe()
+    }
+  }, [])
+
+  const handleLoginGoogle = async () => {
+    const provider = new firebase.auth.GoogleAuthProvider()
+
+    const result = await auth.signInWithPopup(provider)
+    console.log(result)
+
+    if (result.user) {
+      const { displayName, photoURL, uid } = result.user
+
+      if (!displayName || !photoURL) {
+        throw new Error('Missing information from Google Account.')
+      }
+
+      setUser({
+        id: uid,
+        name: displayName,
+        avatar: photoURL
+      })
     }
   }
 
-  const handleLogin = () => {
-    value.activateAuth()
+  const handleLoginGithub = async () => {
+    const provider = new firebase.auth.GithubAuthProvider()
+
+    const result = await auth.signInWithPopup(provider)
+    console.log(result)
+
+    if (result.user) {
+      const { displayName, photoURL, uid } = result.user
+
+      if (!displayName || !photoURL) {
+        throw new Error('Missing information from Google Account.')
+      }
+
+      setUser({
+        id: uid,
+        name: displayName,
+        avatar: photoURL
+      })
+    }
   }
 
   const handleLogout = () => {
-    setIsAuth(false)
+    auth.signOut()
+    setUser(null)
   }
+
+  console.log(user)
 
   return (
     <AuthContext.Provider
       value={{
-        isAuth,
-        handleLogin,
-        handleLogout
+        user,
+        setUser,
+        handleLoginGoogle,
+        handleLogout,
+        handleLoginGithub
       }}
     >
       {children}

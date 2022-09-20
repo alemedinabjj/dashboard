@@ -7,11 +7,10 @@ export const SidebarContainer = styled.aside`
   position: sticky;
   top: 0;
   left: 0;
-  align-items: flex-start;
   padding: 20px;
   display: flex;
   flex-direction: column;
-
+  
   justify-content: space-between;
   pointer-events: all;
   transition: all 0.3s ease-in-out;
