@@ -1,4 +1,4 @@
-import { BaseIcon } from '../BaseIcon'
+import { BaseIcon } from '../../utils/BaseIcon'
 
 export const dataButtons = [
   {

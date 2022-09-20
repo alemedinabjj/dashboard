@@ -1,63 +1,63 @@
-import * as S from './styles'
-import { useState, useEffect, useContext } from 'react'
-import { dataButtons } from './data'
-import { Link, NavLink } from 'react-router-dom'
-import { useRef } from 'react'
-import { ToggleLeft, ToggleRight } from 'phosphor-react'
-import { ThemeContext } from '../../styles/ThemeProvider'
-import { AuthContext } from '../../context/AuthContext'
+import * as S from "./styles";
+import { useState, useEffect, useContext } from "react";
+import { dataButtons } from "./data";
+import { Link, NavLink } from "react-router-dom";
+import { useRef } from "react";
+import { ToggleLeft, ToggleRight } from "phosphor-react";
+import { ThemeContext } from "../../styles/ThemeProvider";
+import { AuthContext } from "../../context/AuthContext";
 
-import { useTransactions } from '../../context/useTransactions'
+import { useTransactions } from "../../context/useTransactions";
 
 const LinkStyle = {
-  textDecoration: 'none',
-  color: 'inherit',
-  width: '100%',
-  height: '40px',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center'
-}
+  textDecoration: "none",
+  color: "inherit",
+  width: "100%",
+  height: "40px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+};
 
 export const Sidebar = () => {
-  const { user, handleLogout } = useContext(AuthContext)
+  const { user, handleLogout } = useContext(AuthContext);
 
-  const navRef = useRef(null)
-  const [active, setActive] = useState(false)
-  const [open, setOpen] = useState(true)
-  const { summary } = useTransactions()
+  const navRef = useRef(null);
+  const [active, setActive] = useState(false);
+  const [open, setOpen] = useState(true);
+  const { summary } = useTransactions();
 
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(false);
 
-  const { theme, toggleTheme } = useContext(ThemeContext)
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   const handleToggle = () => {
-    setActive(!active)
-  }
+    setActive(!active);
+  };
 
   const handleOpen = () => {
-    setOpen(!open)
-  }
+    setOpen(!open);
+  };
 
   useEffect(() => {
-    handleOpen()
-  }, [])
+    handleOpen();
+  }, []);
 
   return (
     <>
       <S.SidebarContainer
-        className={open ? 'open' : 'close'}
+        className={open ? "open" : "close"}
         style={{
-          backgroundColor: theme === 'light' ? 'white' : 'rgb(21, 32, 43)'
+          backgroundColor: theme === "light" ? "white" : "rgb(21, 32, 43)",
         }}
         border={
-          theme === 'light'
-            ? '1px solid rgb(230, 236, 240)'
-            : '1px solid rgb(30, 45, 59)'
+          theme === "light"
+            ? "1px solid rgb(230, 236, 240)"
+            : "1px solid rgb(30, 45, 59)"
         }
       >
         <span className="openCloseButton" onClick={handleOpen} ref={navRef}>
-          {open ? '⇦' : '⇨'}
+          {open ? "⇦" : "⇨"}
         </span>
         <S.Content>
           <S.UserInfo>
@@ -65,37 +65,38 @@ export const Sidebar = () => {
               src={
                 user.avatar
                   ? user.avatar
-                  : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+                  : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
               }
               alt="avatar"
             />
             <h2
+              className="username"
               style={{
-                display: open ? 'flex' : 'none',
-                color: theme === 'light' ? 'black' : 'white'
+                display: open ? "flex" : "none",
+                color: theme === "light" ? "black" : "white",
               }}
             >
-              {user.name}
+              {user.name ? user.name : "Usuário"}
             </h2>
           </S.UserInfo>
           <S.ButtonGroup>
-            {dataButtons.map(item => (
+            {dataButtons.map((item) => (
               <NavLink to={item.path} key={item.id} style={LinkStyle}>
                 <S.Button
                   key={item.id}
                   className={
-                    window.location.pathname === item.path ? 'active' : ''
+                    window.location.pathname === item.path ? "active" : ""
                   }
                   background={
-                    theme === 'light' ? 'rgb(29, 161, 242)' : ' rgb(30, 45, 59)'
+                    theme === "light" ? "rgb(29, 161, 242)" : " rgb(30, 45, 59)"
                   }
                   onClick={handleToggle}
                 >
                   {item.icon}
                   <p
                     style={{
-                      display: open ? 'block' : 'none',
-                      color: theme === 'light' ? 'black' : 'white'
+                      display: open ? "block" : "none",
+                      color: theme === "light" ? "black" : "white",
                     }}
                   >
                     {item.label}
@@ -116,14 +117,14 @@ export const Sidebar = () => {
                 <ToggleLeft
                   size={44}
                   style={{
-                    color: theme === 'light' ? 'black' : 'white'
+                    color: theme === "light" ? "black" : "white",
                   }}
                   onClick={toggleTheme}
                 />
                 <p
                   style={{
-                    display: open ? 'block' : 'none',
-                    color: theme === 'light' ? 'black' : 'white'
+                    display: open ? "block" : "none",
+                    color: theme === "light" ? "black" : "white",
                   }}
                 >
                   Light Mode
@@ -135,13 +136,13 @@ export const Sidebar = () => {
                   size={44}
                   onClick={toggleTheme}
                   style={{
-                    color: theme === 'light' ? 'black' : 'white'
+                    color: theme === "light" ? "black" : "white",
                   }}
                 />
                 <p
                   style={{
-                    display: open ? 'block' : 'none',
-                    color: theme === 'light' ? 'black' : 'white'
+                    display: open ? "block" : "none",
+                    color: theme === "light" ? "black" : "white",
                   }}
                 >
                   Dark Mode
@@ -152,7 +153,7 @@ export const Sidebar = () => {
           <S.Button
             onClick={handleLogout}
             background={
-              theme === 'light' ? 'rgb(29, 161, 242)' : 'rgb(30, 45, 59)'
+              theme === "light" ? "rgb(29, 161, 242)" : "rgb(30, 45, 59)"
             }
           >
             <img
@@ -161,8 +162,8 @@ export const Sidebar = () => {
             />
             <p
               style={{
-                display: open ? 'block' : 'none',
-                color: theme === 'light' ? 'black' : 'white'
+                display: open ? "block" : "none",
+                color: theme === "light" ? "black" : "white",
               }}
             >
               Logout
@@ -171,5 +172,5 @@ export const Sidebar = () => {
         </S.ConfigArea>
       </S.SidebarContainer>
     </>
-  )
-}
+  );
+};

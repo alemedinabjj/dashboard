@@ -63,6 +63,8 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
     
     background: transparent;
+
+    transition: all 0.3s ease-in-out;
   }
 
   .ReactModal__Overlay{ 

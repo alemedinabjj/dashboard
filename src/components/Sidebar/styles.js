@@ -13,7 +13,7 @@ export const SidebarContainer = styled.aside`
   
   justify-content: space-between;
   pointer-events: all;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease;
   border-right: ${props => props.border};
 
 
@@ -76,6 +76,18 @@ export const UserInfo = styled.div`
     font-weight: 700;
     line-height: 1.5rem;
     transition: all 0.3s ease-in-out;
+    animation: slideIn .3s ease-in-out;
+  }
+
+  @keyframes slideIn {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
   }
 `
 
@@ -87,6 +99,18 @@ export const ButtonGroup = styled.div`
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  animation: slideIn .3s ease-in-out;
+
+  @keyframes slideIn {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
 `
 
 export const Button = styled.button`
@@ -107,6 +131,8 @@ export const Button = styled.button`
   gap: 1rem;
 
   position: relative;
+  
+  
 
   &.active {
     background: ${props => props.background};
@@ -119,6 +145,19 @@ export const Button = styled.button`
 
   p {
     position: relative;
+
+    animation: slideIn .3s ease-in-out;
+
+    @keyframes slideIn {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
   }
 
   .notification {

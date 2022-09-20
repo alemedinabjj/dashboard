@@ -3,9 +3,10 @@ import { Table, Button, Container } from './styles'
 import { ThemeContext } from '../../styles/ThemeProvider'
 import { useContext } from 'react'
 import { FiTrash2 } from 'react-icons/fi'
+import { valueFormatted } from '../../utils/NumberFormat'
 
 export const TransactionTable = () => {
-  const { transactions, handleDelete } = useTransactions()
+  const { transactions, handleDelete, handleEdit } = useTransactions()
   const { theme } = useContext(ThemeContext)
 
   transactions.map(transaction => {
@@ -48,24 +49,18 @@ export const TransactionTable = () => {
           </tr>
         </thead>
         <tbody>
-          {transactions.map(transaction => (
+          {transactions.map((transaction) => (
             <tr key={transaction.id}>
               <td>{formatDate(transaction.date)}</td>
               <td>{transaction.description}</td>
               <td>
                 {transaction.type === 'deposit' ? (
                   <span style={{ color: '#12A454' }}>
-                    {new Intl.NumberFormat('pt-BR', {
-                      style: 'currency',
-                      currency: 'BRL'
-                    }).format(transaction.amount)}
+                    {valueFormatted(transaction.amount)}
                   </span>
                 ) : (
                   <span style={{ color: '#E83F5B' }}>
-                    {new Intl.NumberFormat('pt-BR', {
-                      style: 'currency',
-                      currency: 'BRL'
-                    }).format(transaction.amount)}
+                    {valueFormatted(transaction.amount)}
                   </span>
                 )}
               </td>
