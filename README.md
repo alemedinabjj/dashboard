@@ -1,5 +1,5 @@
 <h1 align="center">
- Memerizando
+ Controle de gastos
 </h1>
   
 ![Resultado final do projeto](https://github.com/alemedinabjj/dashboard/blob/main/src/assets/preview/create.png)
