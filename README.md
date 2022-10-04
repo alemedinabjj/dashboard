@@ -12,7 +12,7 @@
 ![Resultado final do projeto](https://github.com/alemedinabjj/dashboard/blob/main/src/assets/preview/lightmode.png)
 ## 📝 Descrição 
 
-Website para fazer upload de memes, ou imagens em geral.
+Website para controle de gastos.
 Utilizando firebase(storage) como banco.
 
 
